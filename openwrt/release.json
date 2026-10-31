@@ -1,18 +1,21 @@
 {
-  "version": "0.1.5",
-  "tag": "openwrt-v0.1.5",
-  "sourceCommit": "8bdd8e4032411e64fa12a1d697a1f8a366b7d549",
-  "bundleSha256": "6808c8608db9ea37344e46e4a4213b06ff885db7c0471fa74c489fd8584de239",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695261470",
+  "version": "0.1.6",
+  "tag": "openwrt-v0.1.6",
+  "sourceCommit": "1b1e5eff5f42fd2f639497f7ef7024d72dccfe20",
+  "bundleSha256": "937aa231a267de36c872a3f6c0cc95c191b28345faa202242ac9e45eb6edf7d2",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695364436",
   "tests": {
-    "opkgSelfUpdate": true,
+    "node": 83,
+    "openwrtSystem": true,
     "luci": true,
-    "node": 82,
-    "apkSelfUpdate": true,
     "nativeLuciLoaders": [
       "25.12.6",
       "24.10.4"
     ],
-    "openwrtSystem": true
+    "apkSelfUpdate": true,
+    "opkgSelfUpdate": true,
+    "boundedLogs": true,
+    "shutdownLifecycle": true,
+    "hardware": "SmartBox OpenWrt 25.12.6"
   }
 }
