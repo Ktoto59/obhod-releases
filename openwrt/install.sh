@@ -1,13 +1,13 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0
 # Release builder fills the pinned download URL and checksum in the online copy.
-BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.3/obhod-openwrt-0.1.3.tar.gz'
-BUNDLE_SHA256='86adc74d1afb722481ef2674cc9a3f5040c50921bf72853d99f337109bc59902'
-BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695184243'
+BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.4/obhod-openwrt-0.1.4.tar.gz'
+BUNDLE_SHA256='b7eb138f7ed499de8cdcdb60269eb5928628c04ca0652ff6642b7b33a5f63dd0'
+BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695213991'
 set -eu
 umask 077
 export LC_ALL=C
-version=0.1.3
+version=0.1.4
 yes=0
 preset_choice=
 profile=auto

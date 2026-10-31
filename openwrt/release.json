@@ -1,13 +1,19 @@
 {
-  "version": "0.1.3",
-  "tag": "openwrt-v0.1.3",
-  "sourceCommit": "b5573c2be3f5876bd11fd7a4ea76b874f5acae23",
-  "bundleSha256": "86adc74d1afb722481ef2674cc9a3f5040c50921bf72853d99f337109bc59902",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695184243",
+  "version": "0.1.4",
+  "tag": "openwrt-v0.1.4",
+  "sourceCommit": "d6b504e2714620422d91c1c916719471a60476c6",
+  "bundleSha256": "b7eb138f7ed499de8cdcdb60269eb5928628c04ca0652ff6642b7b33a5f63dd0",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695213991",
   "tests": {
-    "luci": true,
     "openwrtSystem": true,
+    "nativeLuciDOM": true,
+    "bootstrapTheme": true,
     "node": 82,
+    "mobileWidths": [
+      320,
+      390
+    ],
+    "luci": true,
     "nativeLuciLoaders": [
       "25.12.6",
       "24.10.4"
