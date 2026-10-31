@@ -1,9 +1,9 @@
 {
-  "version": "0.1.6",
-  "tag": "openwrt-v0.1.6",
-  "sourceCommit": "1b1e5eff5f42fd2f639497f7ef7024d72dccfe20",
-  "bundleSha256": "937aa231a267de36c872a3f6c0cc95c191b28345faa202242ac9e45eb6edf7d2",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695364436",
+  "version": "0.1.7",
+  "tag": "openwrt-v0.1.7",
+  "sourceCommit": "93073b18de32aa3b29965decc42226415d0f9bbd",
+  "bundleSha256": "9ee00502ac2ac46eac017dd6071fe40da2b92c3c876857f73bd650765ff382a7",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695795113",
   "tests": {
     "node": 83,
     "openwrtSystem": true,
@@ -14,8 +14,10 @@
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
-    "boundedLogs": true,
-    "shutdownLifecycle": true,
-    "hardware": "SmartBox OpenWrt 25.12.6"
+    "chunkedUtf8Profile": true,
+    "realButtonClick": true,
+    "hardware": "AX3000T OpenWrt 25.12.5",
+    "httpRpcSelectedTunnels": 50,
+    "httpRpcStopStartCycles": 2
   }
 }
