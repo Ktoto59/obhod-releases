@@ -1,9 +1,9 @@
 {
-  "version": "0.1.11",
-  "tag": "openwrt-v0.1.11",
-  "sourceCommit": "43ebd22c47ba9257c87c8cd70433ecbd05a358ac",
-  "bundleSha256": "1dbbe96c0a8114d4e7bb70b71e7114b38c4178f0ecf174c6ed49ed95493f0208",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/696000298",
+  "version": "0.1.12",
+  "tag": "openwrt-v0.1.12",
+  "sourceCommit": "b8350fb9cca51b053e38fa089c82229c6839916e",
+  "bundleSha256": "091612765459752fa9967ba217d3c4baa0bf0d8988a5c5d42eebc379e2b61f2c",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/696079934",
   "tests": {
     "node": 87,
     "openwrtSystem": true,
@@ -14,15 +14,12 @@
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
-    "fakeIpTcpUdp": true,
-    "fakeIpCacheRestart": true,
-    "dnsRestoreRetries": true,
-    "domainEditor1000": true,
-    "cancelChanges": true,
-    "protocolSizeMetadata": true,
-    "hardware": "AX3000T OpenWrt 25.12.5",
-    "hardwareDiagnostics": 7,
-    "hardwareDelayedClientHelloMs": 1500,
-    "legacyFakeIpMigration": true
+    "coreWorkerLaunchFailure": true,
+    "coreWorkerStartupTimeout": true,
+    "coreWorkerZombieRecovery": true,
+    "coreLateLaunchRejected": true,
+    "packageManagerLockRetained": true,
+    "cancelDuringInstallation": true,
+    "hardwareTested": false
   }
 }
