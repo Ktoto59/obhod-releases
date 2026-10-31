@@ -1,9 +1,9 @@
 {
-  "version": "0.17.0",
-  "tag": "v0.17.0",
+  "version": "0.18.0",
+  "tag": "v0.18.0",
   "sourceRepository": "Ktoto59/obhod",
-  "sourceCommit": "fbc67645d591926740edf83c6a90988940bff6a3",
+  "sourceCommit": "d47b5a5f79e582e60a4a9d9549326b01b6168dc9",
   "runtimeSourceRevision": "57276220a20679cad762c9644f6abdaf39ab7688",
   "runtimeSourceArchiveSha256": "3b38ce0abc2308cc0f1b489f452dab3956f9381aaabc351b8c3b89293fca6375",
-  "preparedAt": "2026-09-06T14:32:45.6625474Z"
+  "preparedAt": "2026-10-31T07:37:22.3381544Z"
 }
