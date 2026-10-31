@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "tag": "openwrt-v0.1.8",
-  "sourceCommit": "39d687ca9601880dafc2f815569a35a54b283ed5",
-  "bundleSha256": "956da5356073676138a98e422f2f3b782331c7ba2a23dc933598a5a5eacebbb2",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695883072",
+  "version": "0.1.10",
+  "tag": "openwrt-v0.1.10",
+  "sourceCommit": "506e7a83235c4a8c047625aa6c291139a72b1cd3",
+  "bundleSha256": "ee3f32c5dff090f6a8a0eb16f1db846d17bc1bbaab7dcdf60d83cab1487a644c",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695971483",
   "tests": {
-    "node": 84,
+    "node": 86,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
@@ -14,10 +14,14 @@
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
-    "delayedDomainRouting": true,
-    "collapsedLogsIdle": true,
-    "updateAttention": true,
+    "fakeIpTcpUdp": true,
+    "fakeIpCacheRestart": true,
+    "dnsRestoreRetries": true,
+    "domainEditor1000": true,
+    "cancelChanges": true,
+    "protocolSizeMetadata": true,
     "hardware": "AX3000T OpenWrt 25.12.5",
-    "hardwareDelayedClientHelloMs": 700
+    "hardwareDiagnostics": 7,
+    "hardwareDelayedClientHelloMs": 1500
   }
 }
