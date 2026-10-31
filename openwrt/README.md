@@ -1,4 +1,4 @@
-# Обход для OpenWrt 0.1.2
+# Обход для OpenWrt 0.1.3
 
 Пакеты `obhod` и `luci-app-obhod` добавляют управление через **LuCI → Службы → Обход**.
 Готовых туннелей, ключей и URL подписок в пакете нет. После установки служба выключена.
@@ -35,7 +35,7 @@ sh <(wget -O - https://raw.githubusercontent.com/Ktoto59/obhod-releases/main/ope
 wget -O /tmp/obhod-install.sh https://raw.githubusercontent.com/Ktoto59/obhod-releases/main/openwrt/install.sh && sh /tmp/obhod-install.sh
 ```
 
-Публичная копия скрипта содержит точную ссылку на комплект версии 0.1.2 и его
+Публичная копия скрипта содержит точную ссылку на комплект версии 0.1.3 и его
 SHA-256. Перед распаковкой проверяется архив, затем все файлы внутри него.
 Номер версии не запрашивается через `latest`, сертификаты HTTPS не отключаются.
 
@@ -108,11 +108,11 @@ APK заменяет ядро одной транзакцией. Для opkg д�
 
 Можно также установить комплект без загрузки через скрипт:
 
-Скопируйте архив `obhod-openwrt-0.1.2.tar.gz` на роутер в `/tmp` и выполните:
+Скопируйте архив `obhod-openwrt-0.1.3.tar.gz` на роутер в `/tmp` и выполните:
 
 ```sh
 mkdir -p /tmp/obhod-install
-tar -xzf /tmp/obhod-openwrt-0.1.2.tar.gz -C /tmp/obhod-install
+tar -xzf /tmp/obhod-openwrt-0.1.3.tar.gz -C /tmp/obhod-install
 sh /tmp/obhod-install/install.sh
 ```
 
@@ -179,6 +179,7 @@ npm test
 npm run test:openwrt:ui
 npm run openwrt:fixture
 python3 scripts/test-openwrt-system.py
+npm run test:openwrt:ui -- --luci-loader .tmp/openwrt-tools/luci-25.12.6.js
 ```
 
 Последняя команда запускается от root в отдельной Linux-среде. Она создаёт
@@ -187,6 +188,11 @@ python3 scripts/test-openwrt-system.py
 зависимости заменяются тестовым пакетом; службы и сеть физического роутера не
 затрагиваются. Для проверки ошибок запуска используется управляемая заглушка ядра.
 Полная схема конфигурации отдельно проверяется настоящим Linux sing-box 1.12.22.
+Системная проверка также извлекает штатный `luci.js` из проверенного образа в
+`.tmp/openwrt-tools/luci-25.12.6.js`. Последняя команда использует именно его
+загрузчик классов: воспроизводит ошибку обычного object-экспорта и проверяет
+загрузку исправленного модуля, наследующего `baseclass`, перед проверками UI.
+Код LuCI используется только в тесте и не включается в наши пакеты.
 
 Для создания APK нужен Linux и apk-tools 3 с командой `mkpkg`. Для этой сборки
 использован официальный `apk-tools-static 3.0.8-r0` Alpine Linux; инструмент
