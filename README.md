@@ -5,14 +5,21 @@
 <h1 align="center">Обход</h1>
 
 <p align="center">
-  Центр управления защищённой маршрутизацией в Windows
+  Выборочная маршрутизация для Windows и OpenWrt
 </p>
 
 <p align="center">
   <a href="https://github.com/Ktoto59/obhod-releases/releases/latest"><strong>Скачать последнюю версию</strong></a>
   ·
-  <a href="https://github.com/Ktoto59/obhod">Исходный код и документация</a>
+  <a href="https://github.com/Ktoto59/obhod-source">Исходный код и документация</a>
 </p>
+
+## Платформы
+
+- **Windows:** [установщик](https://github.com/Ktoto59/obhod-releases/releases/latest)
+  и [исходники приложения](https://github.com/Ktoto59/obhod-source/tree/main/windows).
+- **OpenWrt:** [установка и обновление через LuCI](openwrt/README.md)
+  и [исходники пакетов](https://github.com/Ktoto59/obhod-source/tree/main/openwrt).
 
 ## Управляемый маршрут для нужного трафика
 
@@ -88,4 +95,4 @@
 
 > Этот репозиторий используется только для публикации официальных установщиков
 > и файлов автоматического обновления «Обхода». Разработка ведётся в
-> [`Ktoto59/obhod`](https://github.com/Ktoto59/obhod).
+> [`Ktoto59/obhod-source`](https://github.com/Ktoto59/obhod-source).
