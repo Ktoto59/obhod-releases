@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "tag": "openwrt-v0.1.7",
-  "sourceCommit": "93073b18de32aa3b29965decc42226415d0f9bbd",
-  "bundleSha256": "9ee00502ac2ac46eac017dd6071fe40da2b92c3c876857f73bd650765ff382a7",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695795113",
+  "version": "0.1.8",
+  "tag": "openwrt-v0.1.8",
+  "sourceCommit": "39d687ca9601880dafc2f815569a35a54b283ed5",
+  "bundleSha256": "956da5356073676138a98e422f2f3b782331c7ba2a23dc933598a5a5eacebbb2",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695883072",
   "tests": {
-    "node": 83,
+    "node": 84,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
@@ -14,10 +14,10 @@
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
-    "chunkedUtf8Profile": true,
-    "realButtonClick": true,
+    "delayedDomainRouting": true,
+    "collapsedLogsIdle": true,
+    "updateAttention": true,
     "hardware": "AX3000T OpenWrt 25.12.5",
-    "httpRpcSelectedTunnels": 50,
-    "httpRpcStopStartCycles": 2
+    "hardwareDelayedClientHelloMs": 700
   }
 }
