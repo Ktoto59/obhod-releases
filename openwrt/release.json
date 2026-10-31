@@ -1,12 +1,12 @@
 {
-  "version": "0.1.1",
-  "tag": "openwrt-v0.1.1",
-  "sourceCommit": "4cc63e4073c456f9e1d544f6881e86601df2bb70",
-  "bundleSha256": "0c5b4a4038e3f19c0bc401a404affaf1d2978b8c51c82467b3bb23aa1f603d78",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695113633",
+  "version": "0.1.2",
+  "tag": "openwrt-v0.1.2",
+  "sourceCommit": "6a309c2d145a6d683b340671398c3098cea48e29",
+  "bundleSha256": "7c25091e871764f5b98a1f784e725e57870386020c0725f72a8ebb16989d028a",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695170689",
   "tests": {
-    "node": 82,
     "openwrtSystem": true,
-    "luci": true
+    "luci": true,
+    "node": 82
   }
 }

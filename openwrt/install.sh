@@ -1,15 +1,17 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0
 # Release builder fills the pinned download URL and checksum in the online copy.
-BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.1/obhod-openwrt-0.1.1.tar.gz'
-BUNDLE_SHA256='0c5b4a4038e3f19c0bc401a404affaf1d2978b8c51c82467b3bb23aa1f603d78'
-BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695113633'
+BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.2/obhod-openwrt-0.1.2.tar.gz'
+BUNDLE_SHA256='7c25091e871764f5b98a1f784e725e57870386020c0725f72a8ebb16989d028a'
+BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695170689'
 set -eu
 umask 077
 export LC_ALL=C
-version=0.1.1
+version=0.1.2
 yes=0
 preset_choice=
+profile=auto
+protocols=
 check_only=0
 work=
 die() { printf 'Ошибка: %s\n' "$*" >&2; exit 1; }
@@ -20,12 +22,17 @@ while [ "$#" -gt 0 ]; do
 	case "$1" in
 		--yes) yes=1 ;;
 		--check-only) check_only=1 ;;
+		--profile) [ "$#" -ge 2 ] || die 'После --profile укажите auto, lite или full.'; profile=$2; shift ;;
+		--protocols) [ "$#" -ge 2 ] || die 'После --protocols укажите proxy, wireguard, all или none.'; protocols=$2; shift ;;
 		--presets) [ "$#" -ge 2 ] || die 'После --presets укажите recommended, minimal, none или ID через запятую.'; preset_choice=$2; shift ;;
-		--help) echo 'install.sh [--yes] [--check-only] [--presets recommended|minimal|none|id,id]'; exit 0 ;;
+		--help) echo 'install.sh [--yes] [--check-only] [--profile auto|lite|full] [--protocols proxy|wireguard|all|none] [--presets recommended|minimal|none|id,id]'; exit 0 ;;
 		*) die "Неизвестный параметр: $1" ;;
 	esac
 	shift
 done
+case "$profile" in auto|lite|full) ;; *) die 'Профиль: auto, lite или full.' ;; esac
+case "$protocols" in ''|proxy|wireguard|all|none) ;; *) die 'Протоколы: proxy, wireguard, all или none.' ;; esac
+profile_request=$profile
 [ "$(id -u)" = 0 ] || die 'Запустите установщик от root.'
 [ -f /etc/openwrt_release ] || die 'Требуется OpenWrt.'
 . /etc/openwrt_release
@@ -44,15 +51,27 @@ read_resources() {
 	tmp_free=$(free_kb /tmp) || die 'Не удалось определить место /tmp.'
 }
 read_resources
+installed_core=
+if [ "$manager" = apk ]; then
+	installed_core=$(awk '/^P:sing-box(-tiny)?$/ {sub(/^P:/, ""); print; exit}' /lib/apk/db/installed 2>/dev/null || true)
+else
+	installed_core=$(opkg status 'sing-box*' 2>/dev/null | awk '/^Package:/ {p=$2} /^Status:.* installed$/ && (p=="sing-box" || p=="sing-box-tiny") {print p; exit}')
+fi
+if [ "$profile" = auto ]; then
+	case "$installed_core" in sing-box-tiny) profile=lite ;; sing-box) profile=full ;;
+		*) if [ "$ram_total" -lt 196608 ]; then profile=lite; else profile=full; fi ;;
+	esac
+fi
+core=sing-box; default_presets=recommended
+if [ "$profile" = lite ]; then core=sing-box-tiny; default_presets=minimal; fi
 printf 'Обход %s · OpenWrt %s · %s\n' "$version" "$DISTRIB_RELEASE" "$manager"
+printf 'Профиль: %s · %s\n' "$profile" "$core"
 printf 'ОЗУ: %s МБ, доступно %s МБ; накопитель: %s МБ; /tmp: %s МБ\n' "$((ram_total/1024))" "$((ram_available/1024))" "$((flash_free/1024))" "$((tmp_free/1024))"
-[ "$ram_total" -ge 114688 ] || die 'Нужно минимум 128 МБ ОЗУ (112 МБ после резерва ядра).'
-[ "$ram_available" -ge 49152 ] || die 'Нужно не менее 48 МБ доступной ОЗУ.'
-[ "$tmp_free" -ge 16384 ] || die 'Для подготовки требуется минимум 16 МБ в /tmp.'
-[ "$flash_free" -ge 4096 ] || die 'На накопителе осталось менее 4 МБ.'
+[ "$tmp_free" -ge 1024 ] || die 'Для подготовки комплекта требуется минимум 1 МБ в /tmp.'
+[ "$flash_free" -ge 2048 ] || die 'На накопителе осталось менее 2 МБ.'
 
 directory=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd)
-if [ ! -f "$directory/SHA256SUMS" ] || [ ! -f "$directory/presets.tsv" ]; then
+if [ -n "$BUNDLE_URL" ] || [ ! -f "$directory/SHA256SUMS" ] || [ ! -f "$directory/presets.tsv" ]; then
 	[ -n "$BUNDLE_URL" ] && [ -n "$BUNDLE_SHA256" ] || die 'Используйте опубликованный онлайн-установщик или install.sh из распакованного комплекта.'
 	work=$(mktemp -d /tmp/obhod-install.XXXXXX) || die 'Не удалось создать рабочую папку.'
 	echo 'Загружаем комплект Обхода…'
@@ -67,6 +86,8 @@ if [ ! -f "$directory/SHA256SUMS" ] || [ ! -f "$directory/presets.tsv" ]; then
 	set --
 	[ "$yes" = 0 ] || set -- "$@" --yes
 	[ "$check_only" = 0 ] || set -- "$@" --check-only
+	set -- "$@" --profile "$profile_request"
+	[ -z "$protocols" ] || set -- "$@" --protocols "$protocols"
 	[ -z "$preset_choice" ] || set -- "$@" --presets "$preset_choice"
 	sh "$work/bundle/install.sh" "$@"
 	exit $?
@@ -76,16 +97,42 @@ sha256sum -c SHA256SUMS || die 'Контрольные суммы файлов �
 if [ "$manager" = apk ]; then
 	[ -f "obhod-$version-r1.apk" ] && [ -f "luci-app-obhod-$version-r1.apk" ] || die 'В комплекте нет APK.'
 else [ -f "obhod_$version-1_all.ipk" ] && [ -f "luci-app-obhod_$version-1_all.ipk" ] || die 'В комплекте нет IPK.'; fi
+. "$directory/package-lib.sh"
+planner="$directory/installer-plan.uc"
 
-if [ -z "$preset_choice" ]; then
-	if [ "$yes" = 1 ]; then preset_choice=recommended
-	else
-		if [ -t 0 ]; then exec 4<&0
-		elif [ -r /dev/tty ] && (exec </dev/tty) 2>/dev/null; then exec 4</dev/tty
-		else die 'Без терминала укажите --yes или --presets.'; fi
-		printf '\nСписки по умолчанию:\n1) Рекомендуемые: Россия изнутри, Discord, Meta, Telegram, Google AI\n2) Минимальные: Discord, Telegram, Google AI\n3) Выбрать самостоятельно\n4) Без готовых списков\nВыбор [1]: '
+open_terminal() {
+	if [ -t 0 ]; then exec 4<&0
+	elif [ -r /dev/tty ] && (exec </dev/tty) 2>/dev/null; then exec 4</dev/tty
+	else die 'Без терминала укажите --yes или --protocols и --presets.'; fi
+}
+if [ -z "$protocols" ]; then
+	protocols=all; [ "$profile" != lite ] || protocols=proxy
+	if [ "$yes" = 0 ]; then
+		open_terminal
+		default_answer=3; [ "$protocols" != proxy ] || default_answer=1
+		printf '\nПротоколы:\n1) VLESS/Reality, Shadowsocks, Trojan, Hysteria2, TUIC, AnyTLS, SOCKS/HTTP — облегчённое ядро\n2) WireGuard — полное ядро\n3) Все поддерживаемые — полное ядро\n4) Выбрать позже в LuCI — без установки ядра\nВыбор [%s]: ' "$default_answer"
 		read -r answer <&4 || die 'Ввод завершён; установка отменена.'
-		case "$answer" in ''|1) preset_choice=recommended ;; 2) preset_choice=minimal ;; 4) preset_choice=none ;;
+		case "$answer" in '') ;; 1) protocols=proxy ;; 2) protocols=wireguard ;; 3) protocols=all ;; 4) protocols=none ;; *) die 'Выберите 1, 2, 3 или 4.' ;; esac
+	fi
+fi
+case "$protocols" in
+	none) profile=none; core=; default_presets=minimal ;;
+	wireguard|all) [ "$profile_request" != lite ] || die 'WireGuard требует --profile full или auto.'; profile=full; core=sing-box; default_presets=recommended ;;
+	proxy) if [ "$profile_request" = full ] || [ "$installed_core" = sing-box ]; then profile=full; core=sing-box
+		else profile=lite; core=sing-box-tiny; default_presets=minimal; fi ;;
+esac
+[ -z "$core" ] || [ -z "$installed_core" ] || [ "$installed_core" = "$core" ] || die 'Для смены установленного ядра выключите Обход и выберите протоколы в LuCI.'
+printf 'Выбранные протоколы: %s · ядро: %s\n' "$protocols" "${core:-выбор позже в LuCI}"
+
+if [ "$profile" = lite ]; then echo 'Облегчённое ядро: VLESS/Reality поддерживается; для WireGuard нужен профиль full.'; fi
+if [ -z "$preset_choice" ]; then
+	if [ "$yes" = 1 ]; then preset_choice=$default_presets
+	else
+		open_terminal
+		default_answer=1; [ "$profile" != lite ] || default_answer=2
+		printf '\nСписки по умолчанию:\n1) Рекомендуемые: Россия изнутри, Discord, Meta, Telegram, Google AI\n2) Минимальные: Discord, Telegram, Google AI\n3) Выбрать самостоятельно\n4) Без готовых списков\nВыбор [%s]: ' "$default_answer"
+		read -r answer <&4 || die 'Ввод завершён; установка отменена.'
+		case "$answer" in '') preset_choice=$default_presets ;; 1) preset_choice=recommended ;; 2) preset_choice=minimal ;; 4) preset_choice=none ;;
 			3) awk -F'|' '{printf "%2d) %s\n", NR,$2}' presets.tsv
 				printf 'Номера через пробел или запятую: '
 				read -r answer <&4 || die 'Ввод завершён.'
@@ -124,36 +171,15 @@ was_running=0
 [ ! -f /var/run/obhod/ready ] || was_running=1
 
 work=$(mktemp -d /tmp/obhod-install.XXXXXX) || die 'Не удалось создать рабочую папку.'
-dependencies='sing-box firewall4 kmod-tun kmod-nft-tproxy kmod-nft-queue curl ca-bundle jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs luci-base'
+dependencies="$core firewall4 kmod-tun kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs luci-base"
 echo 'Обновляем индексы подписанных репозиториев и рассчитываем зависимости…'
 if [ "$manager" = apk ]; then
-	command -v ucode >/dev/null 2>&1 || die 'В этой сборке нет штатного ucode; точная оценка места недоступна.'
 	apk update || die 'Не удалось обновить индексы APK.'
-	apk query --world --recursive --format json --fields name,version,installed-size,file-size $dependencies > "$work/plan.json" || die 'Не удалось разрешить зависимости APK.'
-	apk query --installed --format json --fields name,version '*' > "$work/installed.json" || die 'Не удалось получить установленные пакеты.'
-	ucode installer-plan.uc "$work/plan.json" "$work/installed.json" > "$work/sizes" || die 'Не удалось оценить размер APK.'
-	read -r installed_bytes download_bytes < "$work/sizes"
 else
 	opkg update || die 'Не удалось обновить индексы opkg.'
-	opkg --noaction install $dependencies > "$work/plan.txt" 2>&1 || { cat "$work/plan.txt"; die 'Не удалось разрешить зависимости opkg.'; }
-	awk '$1=="Installing" || $1=="Upgrading" {print $2}' "$work/plan.txt" | sort -u > "$work/names"
-	installed_bytes=0; download_bytes=0
-	while read -r name; do
-		[ -n "$name" ] || continue
-		opkg info "$name" > "$work/info" || die "Нет метаданных $name."
-		values=$(awk '$1=="Installed-Size:" && $2 ~ /^[0-9]+$/ {if($2>i)i=$2;s=1} $1=="Size:" && $2 ~ /^[0-9]+$/ {if($2>d)d=$2;t=1} END {if(!s || !t)exit 1;printf "%.0f %.0f\n",i,d}' "$work/info") || die "Неизвестен размер $name."
-		set -- $values
-		installed_bytes=$((installed_bytes + $1)); download_bytes=$((download_bytes + $2))
-	done < "$work/names"
 fi
-case "$installed_bytes:$download_bytes" in *[!0-9:]*|:*) die 'Некорректные размеры пакетов.' ;; esac
-required_flash=$(((installed_bytes + 1023) / 1024 + 8192))
-required_tmp=$(((download_bytes + 1023) / 1024 + 8192))
-read_resources
-printf 'Новые зависимости: до %s МБ после распаковки, загрузка до %s МБ. Запас накопителя: 8 МБ.\n' "$(((installed_bytes+1048575)/1048576))" "$(((download_bytes+1048575)/1048576))"
-[ "$flash_free" -ge "$required_flash" ] || die "Недостаточно места: нужно $required_flash КБ, доступно $flash_free КБ."
-[ "$tmp_free" -ge "$required_tmp" ] || die "Недостаточно /tmp: нужно $required_tmp КБ, доступно $tmp_free КБ."
-[ "$ram_available" -ge "$((required_tmp + 32768))" ] || die 'Недостаточно ОЗУ для загрузки с запасом 32 МБ.'
+resolve_sizes $dependencies
+check_budget
 [ "$check_only" = 0 ] || { echo 'Проверка пройдена. Пакеты и настройки не изменялись; обновлены индексы в /tmp.'; exit 0; }
 
 echo 'Устанавливаем зависимости из репозиториев OpenWrt…'
