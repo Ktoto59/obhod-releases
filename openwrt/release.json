@@ -1,11 +1,11 @@
 {
-  "version": "0.1.10",
-  "tag": "openwrt-v0.1.10",
-  "sourceCommit": "506e7a83235c4a8c047625aa6c291139a72b1cd3",
-  "bundleSha256": "ee3f32c5dff090f6a8a0eb16f1db846d17bc1bbaab7dcdf60d83cab1487a644c",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/695971483",
+  "version": "0.1.11",
+  "tag": "openwrt-v0.1.11",
+  "sourceCommit": "43ebd22c47ba9257c87c8cd70433ecbd05a358ac",
+  "bundleSha256": "1dbbe96c0a8114d4e7bb70b71e7114b38c4178f0ecf174c6ed49ed95493f0208",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/696000298",
   "tests": {
-    "node": 86,
+    "node": 87,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
@@ -22,6 +22,7 @@
     "protocolSizeMetadata": true,
     "hardware": "AX3000T OpenWrt 25.12.5",
     "hardwareDiagnostics": 7,
-    "hardwareDelayedClientHelloMs": 1500
+    "hardwareDelayedClientHelloMs": 1500,
+    "legacyFakeIpMigration": true
   }
 }
