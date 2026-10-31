@@ -1,0 +1,18 @@
+{
+  "version": "1.13.21-obhod.1",
+  "packageVersion": "1.13.21-r100",
+  "architecture": "mipsel_24kc",
+  "sourceCommit": "cc46ddb25d7ee5e309004d34ba13fecae7e1bfc1",
+  "packageUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/696207545",
+  "packageSha256": "2002eb7a6739abfce11f8fd1914a52bc28d9d61e722ec9488b5c85a5a60cdc70",
+  "packageBytes": 10731189,
+  "sourceSha256": "f88e08a189467a7028078eb0ea7edc3e521a64854f4ffb960ad9f7787c8fae4b",
+  "tests": {
+    "hardware": "SmartBox TURBO+ MT7621 OpenWrt 25.12.6",
+    "successfulStarts": 9,
+    "activeIPv4Interfaces": 3,
+    "diagnosticChecks": 6,
+    "offlineBinaryRebuildIdentical": true,
+    "scopedCleanupAndFailureRecovery": true
+  }
+}

@@ -5,6 +5,12 @@
 
 ## Совместимость
 
+Для 32-битного MT7621 (в том числе ASUS RT-AX53U) с ядром 1.13.21 доступно
+[отдельное исправление ядра](https://github.com/Ktoto59/obhod-releases/blob/main/openwrt/MIPS_CORE_FIX.md).
+Оно устраняет отрицательные номера таблиц auto_redirect и ошибку
+`append redirect route ... 127.0.0.1/32 ... file exists`. Это обновление
+облегчённого ядра; прошивка, подключения и обычные маршруты WireGuard сохраняются.
+
 - OpenWrt 24.10 с opkg: пакеты `.ipk`.
 - OpenWrt 25.12 с apk: пакеты формата APK v3 `.apk`.
 - Служба и LuCI не содержат машинного кода: один набор `all`/`noarch` подходит
