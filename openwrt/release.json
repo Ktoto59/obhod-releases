@@ -1,9 +1,9 @@
 {
-  "version": "0.1.15",
-  "tag": "openwrt-v0.1.15",
-  "sourceCommit": "59d34b20d711cb2251034041ae366d7c67e7c17f",
-  "bundleSha256": "70120c7103c42464b09472f7e02cff8ee0c8e4589456c596de835953150f8cfa",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699264381",
+  "version": "0.1.16",
+  "tag": "openwrt-v0.1.16",
+  "sourceCommit": "8febc2e491ab8c882ce09c43efc8e673ae107385",
+  "bundleSha256": "9621344151466bb751e1c70c1ac422cfadcbd55e7a8fcd8ccd2662ad858bb80d",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699399328",
   "tests": {
     "node": 96,
     "openwrtSystem": true,
@@ -32,7 +32,12 @@
     "dnsRcodeFallback": true,
     "dnsUdpIsolation": true,
     "delayedTcpDns": true,
-    "offlineCoreRebuild": true
+    "offlineCoreRebuild": true,
+    "coreVersionSelection": true,
+    "coreRemoval": true,
+    "coreDependencyRefusal": true,
+    "serviceRestart": true,
+    "diagnosticColors": true
   },
   "compatibleCoreVersion": "1.13.21-obhod.3"
 }
