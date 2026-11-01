@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "version": "1.13.21-obhod.2",
+  "packages": [
+    {
+      "arch": "mipsel_24kc",
+      "manager": "apk",
+      "profile": "lite",
+      "name": "sing-box-tiny-1.13.21-r200_mipsel_24kc.apk",
+      "version": "1.13.21-r200",
+      "sha256": "a2a295be872bcd64f0a4b27f6462878b43d3cc128f97cacbb85edd993139118f",
+      "bytes": 10749362,
+      "installedBytes": 35296084,
+      "releases": [
+        "25.12"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086819"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "opkg",
+      "profile": "lite",
+      "name": "sing-box-tiny_1.13.21-200_mipsel_24kc.ipk",
+      "version": "1.13.21-200",
+      "sha256": "62af8474d842ea5dbce8b58bf55e686bcbd177d5a5b515c7b928000446f0da51",
+      "bytes": 10729556,
+      "installedBytes": 35296084,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086806"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "apk",
+      "profile": "full",
+      "name": "sing-box-1.13.21-r200_mipsel_24kc.apk",
+      "version": "1.13.21-r200",
+      "sha256": "cbe0ffc8e45f38fa3b1df06e481ff17b611671340815770326dc5da29bc8d9d4",
+      "bytes": 10949226,
+      "installedBytes": 35951444,
+      "releases": [
+        "25.12"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086630"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "opkg",
+      "profile": "full",
+      "name": "sing-box_1.13.21-200_mipsel_24kc.ipk",
+      "version": "1.13.21-200",
+      "sha256": "cede26dfbe25d6c761171322a4e44b6839b39155ad1c9be19037eb425f28d08e",
+      "bytes": 10928978,
+      "installedBytes": 35951444,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086624"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "apk",
+      "profile": "lite",
+      "name": "sing-box-tiny-1.13.21-r200_aarch64_cortex-a53.apk",
+      "version": "1.13.21-r200",
+      "sha256": "d87efea77ca3d74346349d6ad56bdeaf18ef5a12e7dac1d3d676591bae0df564",
+      "bytes": 10944812,
+      "installedBytes": 31101749,
+      "releases": [
+        "25.12"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086817"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "opkg",
+      "profile": "lite",
+      "name": "sing-box-tiny_1.13.21-200_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-200",
+      "sha256": "e4b205d1a81edc457ada2a31925a879f2b7d319f918fe44161b7a628fadd5725",
+      "bytes": 10915573,
+      "installedBytes": 31101749,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086633"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "apk",
+      "profile": "full",
+      "name": "sing-box-1.13.21-r200_aarch64_cortex-a53.apk",
+      "version": "1.13.21-r200",
+      "sha256": "3c0009902ecb249c1bc076897cfbea8e8e788a8cd207fef3879f9339652c63ed",
+      "bytes": 11143554,
+      "installedBytes": 31626037,
+      "releases": [
+        "25.12"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086628"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "opkg",
+      "profile": "full",
+      "name": "sing-box_1.13.21-200_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-200",
+      "sha256": "4002e7e91ff0dbc2f6ef1cbf8b310174f23dfd5451c74bbd26f4a8d9378c5d4a",
+      "bytes": 11113653,
+      "installedBytes": 31626037,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699086623"
+    }
+  ],
+  "sourceCommit": "a54aef5bf19ba27e6ea8b90ca8fc2a7f5006bb00",
+  "sourceArchiveUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699090398",
+  "sourceArchiveSha256": "cf6cd23f522cb4540aa5f5e708619e389fe0597e2ab9b72522c9bb90c48901e0"
+}

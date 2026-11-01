@@ -1,21 +1,30 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0
 # Release builder fills the pinned download URL and checksum in the online copy.
-BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.13/obhod-openwrt-0.1.13.tar.gz'
-BUNDLE_SHA256='a2ad7abbfb010ef3c65bb04474ffa97d6e01364facea7074ef923b265851e58a'
-BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/697681562'
+BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.14/obhod-openwrt-0.1.14.tar.gz'
+BUNDLE_SHA256='e3bcbb49b8680febaac089db2b66bb29f1d197cdf2daff2ee6734c318d1a4626'
+BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699117513'
 set -eu
 umask 077
 export LC_ALL=C
-version=0.1.13
+version=0.1.14
 yes=0
 preset_choice=
 profile=auto
 protocols=
 check_only=0
 work=
+compat_locked=0
+was_running=0
 die() { printf 'Ошибка: %s\n' "$*" >&2; exit 1; }
-cleanup() { case "$work" in /tmp/obhod-install.*) rm -rf "$work" ;; esac; }
+cleanup() {
+	if [ "$compat_locked" = 1 ]; then
+		[ "$was_running" = 0 ] || /usr/libexec/obhod/control start >/dev/null 2>&1 || true
+		rm -f /var/lock/obhod-core.lock/pid /var/lock/obhod-core.lock/started /var/lock/obhod-core.lock/token
+		rmdir /var/lock/obhod-apply.lock /var/lock/obhod-core.lock 2>/dev/null || true
+	fi
+	case "$work" in /tmp/obhod-install.*) rm -rf "$work" ;; esac
+}
 trap cleanup EXIT
 trap 'exit 130' INT TERM
 while [ "$#" -gt 0 ]; do
@@ -171,7 +180,12 @@ was_running=0
 [ ! -f /var/run/obhod/ready ] || was_running=1
 
 work=$(mktemp -d /tmp/obhod-install.XXXXXX) || die 'Не удалось создать рабочую папку.'
+. "$directory/core-compat.sh"
+compat_catalog="$directory/core-catalog.json"
+compat_selector="$directory/core-select.uc"
+select_compat_core
 dependencies="$core firewall4 kmod-tun kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs luci-base"
+if [ "$compat" = 1 ]; then dependencies="firewall4 kmod-tun kmod-inet-diag libc kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs luci-base"; fi
 echo 'Обновляем индексы подписанных репозиториев и рассчитываем зависимости…'
 if [ "$manager" = apk ]; then
 	apk update || die 'Не удалось обновить индексы APK.'
@@ -179,15 +193,28 @@ else
 	opkg update || die 'Не удалось обновить индексы opkg.'
 fi
 resolve_sizes $dependencies
+[ "$compat" = 0 ] || { installed_bytes=$((installed_bytes+compat_plan_installed)); download_bytes=$((download_bytes+compat_plan_download)); }
 check_budget
 [ "$check_only" = 0 ] || { echo 'Проверка пройдена. Пакеты и настройки не изменялись; обновлены индексы в /tmp.'; exit 0; }
+if [ "$compat" = 1 ]; then
+	mkdir -p /var/lock
+	mkdir /var/lock/obhod-core.lock 2>/dev/null || die 'Установка ядра уже выполняется.'
+	if ! mkdir /var/lock/obhod-apply.lock 2>/dev/null; then rmdir /var/lock/obhod-core.lock; die 'Другая операция Обхода ещё выполняется.'; fi
+	compat_locked=1
+	echo "$$" > /var/lock/obhod-core.lock/pid
+	date +%s > /var/lock/obhod-core.lock/started
+	echo "$$-$(date +%s)" > /var/lock/obhod-core.lock/token
+	[ "$was_running" = 0 ] || /usr/libexec/obhod/control stop || die 'Не удалось остановить Обход перед сменой ядра.'
+fi
 
 echo 'Устанавливаем зависимости из репозиториев OpenWrt…'
 if [ "$manager" = apk ]; then
 	apk add $dependencies || die 'Не удалось установить зависимости.'
+	[ "$compat" = 0 ] || install_compat_core
 	apk --no-network add --allow-untrusted "./obhod-$version-r1.apk" "./luci-app-obhod-$version-r1.apk" || die 'Не удалось установить Обход.'
 else
 	opkg install $dependencies || die 'Не удалось установить зависимости.'
+	[ "$compat" = 0 ] || install_compat_core
 	opkg install "./obhod_$version-1_all.ipk" "./luci-app-obhod_$version-1_all.ipk" || die 'Не удалось установить Обход.'
 fi
 if [ ! -s /etc/obhod/settings.json ]; then
@@ -205,6 +232,7 @@ if [ ! -s /etc/obhod/settings.json ]; then
 fi
 if [ "$was_running" = 1 ]; then
 	/usr/libexec/obhod/control start || die 'Пакеты обновлены, но служба не запустилась. Профиль сохранён; проверьте журнал Обхода.'
+	was_running=0
 fi
 echo 'Готово. Войдите в LuCI заново → Службы → Обход. Добавьте подключение и нажмите «Сохранить и включить».'
 echo 'Готовых туннелей в установщике нет. Действующая конфигурация сохранена.'
