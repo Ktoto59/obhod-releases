@@ -1,11 +1,11 @@
 {
-  "version": "0.1.12",
-  "tag": "openwrt-v0.1.12",
-  "sourceCommit": "b8350fb9cca51b053e38fa089c82229c6839916e",
-  "bundleSha256": "091612765459752fa9967ba217d3c4baa0bf0d8988a5c5d42eebc379e2b61f2c",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/696079934",
+  "version": "0.1.13",
+  "tag": "openwrt-v0.1.13",
+  "sourceCommit": "22355fd027f144cea3b788d6ebf42b82fceffe9d",
+  "bundleSha256": "a2ad7abbfb010ef3c65bb04474ffa97d6e01364facea7074ef923b265851e58a",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/697681562",
   "tests": {
-    "node": 87,
+    "node": 95,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
@@ -20,6 +20,9 @@
     "coreLateLaunchRejected": true,
     "packageManagerLockRetained": true,
     "cancelDuringInstallation": true,
-    "hardwareTested": false
+    "hardwareTested": true,
+    "dnsPoolNativeRace": true,
+    "dnsPoolColdStartup": true,
+    "hardwarePlatform": "AX3000T, OpenWrt 25.12.5, sing-box 1.13.21, diagnostics 7/7"
   }
 }
