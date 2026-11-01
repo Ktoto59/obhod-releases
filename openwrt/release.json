@@ -1,11 +1,11 @@
 {
-  "version": "0.1.14",
-  "tag": "openwrt-v0.1.14",
-  "sourceCommit": "a54aef5bf19ba27e6ea8b90ca8fc2a7f5006bb00",
-  "bundleSha256": "e3bcbb49b8680febaac089db2b66bb29f1d197cdf2daff2ee6734c318d1a4626",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699117513",
+  "version": "0.1.15",
+  "tag": "openwrt-v0.1.15",
+  "sourceCommit": "59d34b20d711cb2251034041ae366d7c67e7c17f",
+  "bundleSha256": "70120c7103c42464b09472f7e02cff8ee0c8e4589456c596de835953150f8cfa",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699264381",
   "tests": {
-    "node": 95,
+    "node": 96,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
@@ -28,7 +28,11 @@
     "compatibleCoreInstallers": [
       "apk",
       "opkg"
-    ]
+    ],
+    "dnsRcodeFallback": true,
+    "dnsUdpIsolation": true,
+    "delayedTcpDns": true,
+    "offlineCoreRebuild": true
   },
-  "compatibleCoreVersion": "1.13.21-obhod.2"
+  "compatibleCoreVersion": "1.13.21-obhod.3"
 }
