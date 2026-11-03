@@ -1,11 +1,12 @@
 {
-  "version": "0.1.16",
-  "tag": "openwrt-v0.1.16",
-  "sourceCommit": "8febc2e491ab8c882ce09c43efc8e673ae107385",
-  "bundleSha256": "9621344151466bb751e1c70c1ac422cfadcbd55e7a8fcd8ccd2662ad858bb80d",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/699399328",
+  "version": "0.1.17",
+  "tag": "openwrt-v0.1.17",
+  "sourceCommit": "569f14b61dd2d4b1a7347d97b3290c6cd1350de8",
+  "bundleSha256": "d624975f073e65568dbcec555d42fef5f691bd3f64825a2c180eea6aaf4333f2",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705885470",
+  "compatibleCoreVersion": "1.13.21-obhod.4",
   "tests": {
-    "node": 96,
+    "node": 99,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
@@ -14,30 +15,15 @@
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
-    "coreWorkerLaunchFailure": true,
-    "coreWorkerStartupTimeout": true,
-    "coreWorkerZombieRecovery": true,
-    "coreLateLaunchRejected": true,
-    "packageManagerLockRetained": true,
-    "cancelDuringInstallation": true,
-    "hardwareTested": true,
-    "dnsPoolNativeRace": true,
-    "dnsPoolColdStartup": true,
-    "hardwarePlatform": "MIPS/OpenWrt 25.12.6 and ARM64/OpenWrt 25.12.5; diagnostics 7/7",
-    "nativeDnsPool": true,
-    "compatibleCoreInstallers": [
-      "apk",
-      "opkg"
-    ],
-    "dnsRcodeFallback": true,
-    "dnsUdpIsolation": true,
-    "delayedTcpDns": true,
+    "requiredCoreMigration": true,
+    "kernelFirstPacketSelection": true,
+    "IPv6Netns": true,
+    "cachedListsOfflineStartup": true,
+    "malformedListUpdate": true,
+    "unchangedSaveKeepsPid": true,
+    "networkRecovery": true,
     "offlineCoreRebuild": true,
-    "coreVersionSelection": true,
-    "coreRemoval": true,
-    "coreDependencyRefusal": true,
-    "serviceRestart": true,
-    "diagnosticColors": true
-  },
-  "compatibleCoreVersion": "1.13.21-obhod.3"
+    "hardwareTested": true,
+    "hardwarePlatform": "ARM64/OpenWrt 25.12.5; diagnostics 7/7. MIPS cross-built; .4 not tested on physical MIPS."
+  }
 }

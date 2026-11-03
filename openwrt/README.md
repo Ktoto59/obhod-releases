@@ -11,7 +11,7 @@
 - OpenWrt **24.10** с `opkg` (`.ipk`) или **25.12** с `apk` (`.apk`).
 - LuCI, firewall4/nftables, TUN и доступ SSH от `root`.
 - Совместимое ядро Обхода доступно для `mipsel_24kc` и `aarch64_cortex-a53`;
-  на остальных платформах используются доступные штатные пакеты прошивки.
+  на остальных платформах нужны sing-box 1.12 либо ядро с `kernel-route-set-v1`.
 - Обычная заводская прошивка роутера не подходит.
 
 Установщик показывает доступную ОЗУ, flash и `/tmp`. Размер ядра зависит от
@@ -38,7 +38,7 @@ wget -O /tmp/obhod-install.sh https://raw.githubusercontent.com/Ktoto59/obhod-re
 нет; после чистой установки служба выключена.
 
 Если роутер не может скачать комплект, перенесите архив из
-[релиза OpenWrt 0.1.16](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.16)
+[релиза OpenWrt 0.1.17](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.17)
 с ПК. [Инструкция переноса и установки](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#установка).
 
 ## Первая настройка
@@ -71,8 +71,10 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 ## Обновление самого Обхода
 
 Откройте **Обзор → Обновления Обхода**, проверьте версию и запустите обновление.
-Сначала сохраните черновик. Обновятся служба и LuCI; ядро обновляется
-отдельно в **Протоколы**. Для версий до 0.1.5 один раз используйте установщик.
+Сначала сохраните черновик. Обновятся служба и LuCI. При переходе на 0.1.17
+ядро 1.13 на поддерживаемых ARM64/MIPS обновится до обязательной .4 с сохранением
+полного/облегчённого варианта. Нужны интернет и место для загрузки ядра.
+Для версий до 0.1.5 один раз используйте установщик.
 [Подробности обновления](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#обновление-обхода).
 
 ## Полное руководство
@@ -86,3 +88,9 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 - [Резервная копия](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#резервная-копия).
 - [Удаление](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#удаление).
 - [Разработка и сборка](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/docs/DEVELOPMENT.md).
+
+## Изменения 0.1.17
+
+Отбор FakeIP и подсетей в nftables до NFQUEUE, сохранение без лишнего перезапуска,
+восстановление по сетевым событиям и IP-маршруты без ожидания sniffing.
+[Полный список изменений](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.17).
