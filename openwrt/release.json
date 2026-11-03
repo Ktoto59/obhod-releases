@@ -1,17 +1,16 @@
 {
-  "version": "0.1.17",
-  "tag": "openwrt-v0.1.17",
-  "sourceCommit": "569f14b61dd2d4b1a7347d97b3290c6cd1350de8",
-  "bundleSha256": "d624975f073e65568dbcec555d42fef5f691bd3f64825a2c180eea6aaf4333f2",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705885470",
+  "version": "0.1.18",
+  "tag": "openwrt-v0.1.18",
+  "sourceCommit": "288254f94cead4bdf0d54d7322f7c609a362cbb6",
+  "bundleSha256": "39ad5d0d44e372be8b09264cd831d5b4a02e530aaa379685534180e5a3b356c0",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705931950",
   "compatibleCoreVersion": "1.13.21-obhod.4",
   "tests": {
     "node": 99,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
-      "25.12.6",
-      "24.10.4"
+      "25.12.6"
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
@@ -24,6 +23,7 @@
     "networkRecovery": true,
     "offlineCoreRebuild": true,
     "hardwareTested": true,
-    "hardwarePlatform": "ARM64/OpenWrt 25.12.5; diagnostics 7/7. MIPS cross-built; .4 not tested on physical MIPS."
+    "hardwarePlatform": "ARM64/OpenWrt 25.12.5; installed .18, router wget through FakeIP and diagnostics 7/7. MIPS cross-built.",
+    "routerOriginFakeIp": true
   }
 }

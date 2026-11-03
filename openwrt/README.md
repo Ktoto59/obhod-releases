@@ -38,7 +38,7 @@ wget -O /tmp/obhod-install.sh https://raw.githubusercontent.com/Ktoto59/obhod-re
 нет; после чистой установки служба выключена.
 
 Если роутер не может скачать комплект, перенесите архив из
-[релиза OpenWrt 0.1.17](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.17)
+[релиза OpenWrt 0.1.18](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.18)
 с ПК. [Инструкция переноса и установки](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#установка).
 
 ## Первая настройка
@@ -71,7 +71,7 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 ## Обновление самого Обхода
 
 Откройте **Обзор → Обновления Обхода**, проверьте версию и запустите обновление.
-Сначала сохраните черновик. Обновятся служба и LuCI. При переходе на 0.1.17
+Сначала сохраните черновик. Обновятся служба и LuCI. При переходе на 0.1.18
 ядро 1.13 на поддерживаемых ARM64/MIPS обновится до обязательной .4 с сохранением
 полного/облегчённого варианта. Нужны интернет и место для загрузки ядра.
 Для версий до 0.1.5 один раз используйте установщик.
@@ -89,8 +89,11 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 - [Удаление](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#удаление).
 - [Разработка и сборка](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/docs/DEVELOPMENT.md).
 
-## Изменения 0.1.17
+## Изменения 0.1.18
 
 Отбор FakeIP и подсетей в nftables до NFQUEUE, сохранение без лишнего перезапуска,
 восстановление по сетевым событиям и IP-маршруты без ожидания sniffing.
-[Полный список изменений](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.17).
+[Полный список изменений](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.18).
+
+В 0.1.18 исправлены собственные запросы роутера к выбранным FakeIP, включая
+получение обновлений. [Список исправлений](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.18).
