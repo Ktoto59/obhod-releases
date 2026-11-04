@@ -38,7 +38,7 @@ wget -O /tmp/obhod-install.sh https://raw.githubusercontent.com/Ktoto59/obhod-re
 нет; после чистой установки служба выключена.
 
 Если роутер не может скачать комплект, перенесите архив из
-[релиза OpenWrt 0.1.18](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.18)
+[релиза OpenWrt 0.1.19](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.19)
 с ПК. [Инструкция переноса и установки](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#установка).
 
 ## Первая настройка
@@ -71,9 +71,9 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 ## Обновление самого Обхода
 
 Откройте **Обзор → Обновления Обхода**, проверьте версию и запустите обновление.
-Сначала сохраните черновик. Обновятся служба и LuCI. При переходе на 0.1.18
-ядро 1.13 на поддерживаемых ARM64/MIPS обновится до обязательной .4 с сохранением
-полного/облегчённого варианта. Нужны интернет и место для загрузки ядра.
+Сначала сохраните черновик. Обновятся служба и LuCI. При переходе на 0.1.19
+ядро 1.13 без kernel-route-set-v1 на поддерживаемых ARM64/MIPS обновится до .5
+с сохранением полного/облегчённого варианта. Наличие .5 само по себе не перезапускает совместимую работающую службу. Нужны интернет и место для загрузки ядра.
 Для версий до 0.1.5 один раз используйте установщик.
 [Подробности обновления](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#обновление-обхода).
 
@@ -88,6 +88,16 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 - [Резервная копия](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#резервная-копия).
 - [Удаление](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#удаление).
 - [Разработка и сборка](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/docs/DEVELOPMENT.md).
+
+## Изменения 0.1.19
+
+Стабильные приложение 0.1.19 и ядро 1.13.21-obhod.5: обновлённый LuCI,
+редактор доменов, DNS recovery, operation locking, FakeIP persistence и телеметрия.
+[Приложение](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.19),
+[ядро](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-core-v1.13.21-obhod.5).
+Для отката opkg на бинарник .4 используйте отдельную revision 1.13.21-401 через
+помощник core-opkg.uc; оригинальный 400 и прежние релизы не изменены.
+Проверки WSL/chroot/QEMU не заменяют проверку физического оборудования.
 
 ## Изменения 0.1.18
 

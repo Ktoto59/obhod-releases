@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.13.21-obhod.4",
+  "version": "1.13.21-obhod.5",
   "packages": [
     {
       "arch": "mipsel_24kc",
@@ -261,16 +261,19 @@
       "arch": "mipsel_24kc",
       "manager": "opkg",
       "profile": "lite",
-      "name": "sing-box-tiny_1.13.21-400_mipsel_24kc.ipk",
-      "version": "1.13.21-400",
-      "sha256": "addd63ad321e8a8f475f4af95192617c257db1517822166705eb7093dbc5c770",
-      "bytes": 10732847,
+      "name": "sing-box-tiny_1.13.21-401_mipsel_24kc.ipk",
+      "version": "1.13.21-401",
+      "sha256": "4373a65ec82fca3bde8559c2d9bef5fceaec52a0b8dbcd3d161e052dda6912fb",
+      "bytes": 10732859,
       "installedBytes": 35361747,
       "releases": [
         "24.10"
       ],
-      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705860332",
-      "coreVersion": "1.13.21-obhod.4"
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098508",
+      "coreVersion": "1.13.21-obhod.4",
+      "sourcePackage": "sing-box-tiny_1.13.21-400_mipsel_24kc.ipk",
+      "sourceSha256": "addd63ad321e8a8f475f4af95192617c257db1517822166705eb7093dbc5c770",
+      "payloadSha256": "6afdea1719c63ffe7b8f0f23a0a53745046ebb484bf05e8e18d19be0993b5324"
     },
     {
       "arch": "mipsel_24kc",
@@ -291,16 +294,19 @@
       "arch": "mipsel_24kc",
       "manager": "opkg",
       "profile": "full",
-      "name": "sing-box_1.13.21-400_mipsel_24kc.ipk",
-      "version": "1.13.21-400",
-      "sha256": "ffd9b76755f5c1950388984bf35e2b35ff66b56c0136bfbe2057ae57ed6e361d",
-      "bytes": 10930084,
+      "name": "sing-box_1.13.21-401_mipsel_24kc.ipk",
+      "version": "1.13.21-401",
+      "sha256": "97db05685137012f3660f2dc82cb0d89a9ebb6523b88ce1c280b90d70a3819ff",
+      "bytes": 10930087,
       "installedBytes": 36017107,
       "releases": [
         "24.10"
       ],
-      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705860432",
-      "coreVersion": "1.13.21-obhod.4"
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098755",
+      "coreVersion": "1.13.21-obhod.4",
+      "sourcePackage": "sing-box_1.13.21-400_mipsel_24kc.ipk",
+      "sourceSha256": "ffd9b76755f5c1950388984bf35e2b35ff66b56c0136bfbe2057ae57ed6e361d",
+      "payloadSha256": "e8c0199cb8874bef3c716b916cb836519ca825630568702d8e919803bc7bdf4b"
     },
     {
       "arch": "aarch64_cortex-a53",
@@ -321,16 +327,19 @@
       "arch": "aarch64_cortex-a53",
       "manager": "opkg",
       "profile": "lite",
-      "name": "sing-box-tiny_1.13.21-400_aarch64_cortex-a53.ipk",
-      "version": "1.13.21-400",
-      "sha256": "2c3c00220a07d8afa03573e44fc1e907c6d19ed28b3a489784f39c4aa823b202",
-      "bytes": 10919470,
+      "name": "sing-box-tiny_1.13.21-401_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-401",
+      "sha256": "29fa89f0b311363cee87cb326f3594b20d557adeaa111fddc268ed61ab4d431a",
+      "bytes": 10919498,
       "installedBytes": 31101876,
       "releases": [
         "24.10"
       ],
-      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705854427",
-      "coreVersion": "1.13.21-obhod.4"
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098499",
+      "coreVersion": "1.13.21-obhod.4",
+      "sourcePackage": "sing-box-tiny_1.13.21-400_aarch64_cortex-a53.ipk",
+      "sourceSha256": "2c3c00220a07d8afa03573e44fc1e907c6d19ed28b3a489784f39c4aa823b202",
+      "payloadSha256": "7ce1f1e865c39a4fab5623edcd983d9bd7d0af682ed75b42e5adbffd2d3d21bd"
     },
     {
       "arch": "aarch64_cortex-a53",
@@ -345,6 +354,191 @@
         "25.12"
       ],
       "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705854437",
+      "coreVersion": "1.13.21-obhod.4"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "opkg",
+      "profile": "full",
+      "name": "sing-box_1.13.21-401_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-401",
+      "sha256": "055810864fc3f496460a706e5034a7682914b8ac13191e7e561d78c87078b292",
+      "bytes": 11119101,
+      "installedBytes": 31626164,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098621",
+      "coreVersion": "1.13.21-obhod.4",
+      "sourcePackage": "sing-box_1.13.21-400_aarch64_cortex-a53.ipk",
+      "sourceSha256": "6da801c4eb6712e332ed7b8a3eb0a226210008edb55756799d13aeb656547e13",
+      "payloadSha256": "14d2c9fbb9080691b5ed657b540071fa21bde3ce50a3ff034cf4a01a85e24388"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "apk",
+      "profile": "lite",
+      "name": "sing-box-tiny-1.13.21-r500_mipsel_24kc.apk",
+      "version": "1.13.21-r500",
+      "sha256": "85dcd59b05c23dc21f3be7cee712dfda33c2cd0715cd617eb92ab67fe20ff07f",
+      "bytes": 10755440,
+      "installedBytes": 35361747,
+      "releases": [
+        "25.12"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098527"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "opkg",
+      "profile": "lite",
+      "name": "sing-box-tiny_1.13.21-500_mipsel_24kc.ipk",
+      "version": "1.13.21-500",
+      "sha256": "8b6fffae9441b0a7171ac1991b21612c143d06dcdef65dc396d22a5e269aaaea",
+      "bytes": 10735792,
+      "installedBytes": 35361747,
+      "releases": [
+        "24.10"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098602"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "apk",
+      "profile": "full",
+      "name": "sing-box-1.13.21-r500_mipsel_24kc.apk",
+      "version": "1.13.21-r500",
+      "sha256": "b904e724f6730ec10cca2c9ce078ca9f924e0041471bb6fc8e09bf96010306ea",
+      "bytes": 10950780,
+      "installedBytes": 36017107,
+      "releases": [
+        "25.12"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098427"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "opkg",
+      "profile": "full",
+      "name": "sing-box_1.13.21-500_mipsel_24kc.ipk",
+      "version": "1.13.21-500",
+      "sha256": "30908d2c57edfed71b38b1e0ad6c7c7e9769d8e525e21460106663c4ca133c23",
+      "bytes": 10931330,
+      "installedBytes": 36017107,
+      "releases": [
+        "24.10"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098729"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "apk",
+      "profile": "lite",
+      "name": "sing-box-tiny-1.13.21-r500_aarch64_cortex-a53.apk",
+      "version": "1.13.21-r500",
+      "sha256": "b87b44c43d19fec851ace784867a3f38ceea3892534f5e67960cea856e0c0bf8",
+      "bytes": 10952067,
+      "installedBytes": 31101876,
+      "releases": [
+        "25.12"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098475"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "opkg",
+      "profile": "lite",
+      "name": "sing-box-tiny_1.13.21-500_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-500",
+      "sha256": "7fd82014d5bdd96ad05e0750501ef2d278c691ee3294d0d4934f804d4b91e300",
+      "bytes": 10923597,
+      "installedBytes": 31101876,
+      "releases": [
+        "24.10"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098513"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "apk",
+      "profile": "full",
+      "name": "sing-box-1.13.21-r500_aarch64_cortex-a53.apk",
+      "version": "1.13.21-r500",
+      "sha256": "99976e2cf50063ab3f4bd614c87a36419f7108abf71814274ab9e422a6abe437",
+      "bytes": 11151558,
+      "installedBytes": 31626164,
+      "releases": [
+        "25.12"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098421"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "opkg",
+      "profile": "full",
+      "name": "sing-box_1.13.21-500_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-500",
+      "sha256": "efed1f4e11de7e7afca2eff9b9abff5468e5b4efa199b9ca64520f7a7aa8eb55",
+      "bytes": 11122629,
+      "installedBytes": 31626164,
+      "releases": [
+        "24.10"
+      ],
+      "coreVersion": "1.13.21-obhod.5",
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709098777"
+    }
+  ],
+  "legacyPackages": [
+    {
+      "arch": "mipsel_24kc",
+      "manager": "opkg",
+      "profile": "lite",
+      "name": "sing-box-tiny_1.13.21-400_mipsel_24kc.ipk",
+      "version": "1.13.21-400",
+      "sha256": "addd63ad321e8a8f475f4af95192617c257db1517822166705eb7093dbc5c770",
+      "bytes": 10732847,
+      "installedBytes": 35361747,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705860332",
+      "coreVersion": "1.13.21-obhod.4"
+    },
+    {
+      "arch": "mipsel_24kc",
+      "manager": "opkg",
+      "profile": "full",
+      "name": "sing-box_1.13.21-400_mipsel_24kc.ipk",
+      "version": "1.13.21-400",
+      "sha256": "ffd9b76755f5c1950388984bf35e2b35ff66b56c0136bfbe2057ae57ed6e361d",
+      "bytes": 10930084,
+      "installedBytes": 36017107,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705860432",
+      "coreVersion": "1.13.21-obhod.4"
+    },
+    {
+      "arch": "aarch64_cortex-a53",
+      "manager": "opkg",
+      "profile": "lite",
+      "name": "sing-box-tiny_1.13.21-400_aarch64_cortex-a53.ipk",
+      "version": "1.13.21-400",
+      "sha256": "2c3c00220a07d8afa03573e44fc1e907c6d19ed28b3a489784f39c4aa823b202",
+      "bytes": 10919470,
+      "installedBytes": 31101876,
+      "releases": [
+        "24.10"
+      ],
+      "url": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705854427",
       "coreVersion": "1.13.21-obhod.4"
     },
     {

@@ -1,19 +1,26 @@
 {
-  "version": "0.1.18",
-  "tag": "openwrt-v0.1.18",
-  "sourceCommit": "288254f94cead4bdf0d54d7322f7c609a362cbb6",
-  "bundleSha256": "39ad5d0d44e372be8b09264cd831d5b4a02e530aaa379685534180e5a3b356c0",
-  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/705931950",
-  "compatibleCoreVersion": "1.13.21-obhod.4",
+  "version": "0.1.19",
+  "tag": "openwrt-v0.1.19",
+  "sourceCommit": "8559b4551d8e1400a9dbf9f97e2a42dfbb75ab47",
+  "bundleSha256": "6cdd2d01ce7befd27ea952e2f420b73be5491291f591eec647e2722d5a944b62",
+  "bundleUrl": "https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709142318",
+  "compatibleCoreVersion": "1.13.21-obhod.5",
   "tests": {
-    "node": 99,
+    "node": 108,
+    "linuxNode": 94,
+    "linuxNodeSkipped": 14,
+    "goRace": 17,
+    "auditApk": 44,
+    "auditOpkg": 44,
     "openwrtSystem": true,
     "luci": true,
     "nativeLuciLoaders": [
+      "24.10.4",
       "25.12.6"
     ],
     "apkSelfUpdate": true,
     "opkgSelfUpdate": true,
+    "appRollback18": true,
     "requiredCoreMigration": true,
     "kernelFirstPacketSelection": true,
     "IPv6Netns": true,
@@ -22,8 +29,12 @@
     "unchangedSaveKeepsPid": true,
     "networkRecovery": true,
     "offlineCoreRebuild": true,
-    "hardwareTested": true,
-    "hardwarePlatform": "ARM64/OpenWrt 25.12.5; installed .18, router wget through FakeIP and diagnostics 7/7. MIPS cross-built.",
-    "routerOriginFakeIp": true
+    "routerOriginFakeIp": true,
+    "publicCoreAssetsVerified": true,
+    "publicAppAssetsVerified": true,
+    "coreIpkCompatibilityRollback401": true,
+    "opkgFaultSets": 4,
+    "hardwareTested": false,
+    "environment": "WSL namespaces and OpenWrt x86 chroots; ARM64/MIPS ELF via QEMU; dependencies/procd mocked in package tests"
   }
 }
