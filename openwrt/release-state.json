@@ -1,0 +1,18 @@
+{
+  "version": "0.1.20",
+  "tag": "openwrt-v0.1.20",
+  "sourceRepository": "Ktoto59/obhod-source",
+  "sourceCommit": "b104edd0880331c5d0439510660ba5cc352ad8e2",
+  "sourceTag": "openwrt-v0.1.20",
+  "sourceArchive": "obhod-openwrt-0.1.20-source.tar.gz",
+  "sourceArchiveSha256": "012a5e0625a39e9a3fa9c9bfbc3fc6ad30b02f225012a05176a84f2543b3c767",
+  "compatibleCoreVersion": "1.13.21-obhod.5",
+  "networkCoreChanged": false,
+  "preparedAt": "2026-11-07T08:48:14.861457+00:00",
+  "packageFormats": [
+    "apk-v3",
+    "ipk"
+  ],
+  "architecture": "all/noarch",
+  "status": "prepared"
+}
