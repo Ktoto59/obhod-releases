@@ -38,7 +38,7 @@ wget -O /tmp/obhod-install.sh https://raw.githubusercontent.com/Ktoto59/obhod-re
 нет; после чистой установки служба выключена.
 
 Если роутер не может скачать комплект, перенесите архив из
-[релиза OpenWrt 0.1.19](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.19)
+[релиза OpenWrt 0.1.19](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.20)
 с ПК. [Инструкция переноса и установки](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#установка).
 
 ## Первая настройка
@@ -88,6 +88,13 @@ AmneziaWG в текущем пакете OpenWrt не поддерживаетс
 - [Резервная копия](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#резервная-копия).
 - [Удаление](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/README.md#удаление).
 - [Разработка и сборка](https://github.com/Ktoto59/obhod-source/blob/main/openwrt/docs/DEVELOPMENT.md).
+
+## Изменения 0.1.20
+
+Фильтрация выбранных доменов перед FakeIP, основной DNS с резервными,
+перезапуск без возврата публичного DNS и исправления гонок службы.
+[Релиз 0.1.20](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.20).
+Ядро остаётся 1.13.21-obhod.5.
 
 ## Изменения 0.1.19
 

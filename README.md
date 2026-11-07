@@ -14,13 +14,13 @@
 
 | Windows | OpenWrt |
 | --- | --- |
-| **[Скачать установщик Windows](https://github.com/Ktoto59/obhod-releases/releases/latest)** | **[Скачать комплект OpenWrt](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.18)** |
+| **[Скачать установщик Windows](https://github.com/Ktoto59/obhod-releases/releases/latest)** | **[Скачать комплект OpenWrt](https://github.com/Ktoto59/obhod-releases/releases/tag/openwrt-v0.1.20)** |
 | Windows 10/11, x64 | OpenWrt 24.10 / 25.12 |
 | Файл `Obhod-Setup-<версия>.exe` в разделе Assets | Онлайн-установщик или комплект `.tar.gz` |
 | [Установить на компьютер](#windows-установка-и-первый-запуск) | [Установить на роутер](#openwrt-установка-и-первый-запуск) |
 
 **Latest — канал Windows.** Сборки OpenWrt публикуются отдельно с тегами
-`openwrt-v…` и пометкой предварительной версии. Состав изменений и файлы каждой
+`openwrt-v…`. Состав изменений и файлы каждой
 версии находятся на [странице релизов](https://github.com/Ktoto59/obhod-releases/releases).
 
 [Возможности](#что-умеет-обход) · [Схема работы](#как-это-работает) ·

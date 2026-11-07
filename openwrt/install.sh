@@ -1,13 +1,13 @@
 #!/bin/sh
 # SPDX-License-Identifier: Apache-2.0
 # Release builder fills the pinned download URL and checksum in the online copy.
-BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.19/obhod-openwrt-0.1.19.tar.gz'
-BUNDLE_SHA256='6cdd2d01ce7befd27ea952e2f420b73be5491291f591eec647e2722d5a944b62'
-BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/709142318'
+BUNDLE_URL='https://github.com/Ktoto59/obhod-releases/releases/download/openwrt-v0.1.20/obhod-openwrt-0.1.20.tar.gz'
+BUNDLE_SHA256='6c7503d7663bf317c43f3379346105833471d01b83641bfa7c2d352899935004'
+BUNDLE_API_URL='https://api.github.com/repos/Ktoto59/obhod-releases/releases/assets/720144325'
 set -eu
 umask 077
 export LC_ALL=C
-version=0.1.19
+version=0.1.20
 yes=0
 preset_choice=
 profile=auto
@@ -184,8 +184,8 @@ work=$(mktemp -d /tmp/obhod-install.XXXXXX) || die 'Не удалось созд
 compat_catalog="$directory/core-catalog.json"
 compat_selector="$directory/core-select.uc"
 select_compat_core
-dependencies="$core firewall4 kmod-tun kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs luci-base"
-if [ "$compat" = 1 ]; then dependencies="firewall4 kmod-tun kmod-inet-diag libc kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs luci-base"; fi
+dependencies="$core firewall4 kmod-tun kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs ucode-mod-socket luci-base"
+if [ "$compat" = 1 ]; then dependencies="firewall4 kmod-tun kmod-inet-diag libc kmod-nft-tproxy kmod-nft-queue ca-bundle uclient-fetch jshn jsonfilter rpcd rpcd-mod-file ucode ucode-mod-fs ucode-mod-socket luci-base"; fi
 echo 'Обновляем индексы подписанных репозиториев и рассчитываем зависимости…'
 if [ "$manager" = apk ]; then
 	apk update || die 'Не удалось обновить индексы APK.'
